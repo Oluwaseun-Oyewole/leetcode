@@ -11,7 +11,7 @@
 // Example 2:
 // Input: nums = [-1,0,3,5,9,12], target = 2
 // Output: -1b
-// Explanation: 2 does not exist in nums so return -1
+// Explanation: 2 does not exist in nums so r-eturn -1
 
 // time complexity - O(log n)
 export default function binary_search(arr: number[], target: number) {

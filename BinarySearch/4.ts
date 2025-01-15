@@ -1,5 +1,7 @@
-// Given a m x n matrix grid which is sorted in non-increasing order both row-wise and column-wise,
+// Given a m x n matrix grid which is sorted in
+// non-increasing order both row-wise and column-wise,
 // return the number of negative numbers in grid.
+
 function countNegatives(grid: number[][]): number {
   const cols = grid[0].length;
   let count = 0;
