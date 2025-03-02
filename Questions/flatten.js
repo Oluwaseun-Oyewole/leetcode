@@ -24,3 +24,29 @@ flatten([
 
 // Flattens recursively.
 flatten([1, [2, [3, [4, [5]]]]]);
+
+// Flatten execution with closure and IFEE
+function flattenWithClosure(arr) {
+  let result = [];
+  return (() => {
+    for (let element of arr) {
+      if (Array.isArray(element)) {
+        result = result.concat(flatten(element));
+      } else result.push(element);
+    }
+    return result;
+  })();
+}
+
+function flattenWithReduceClosure(arr) {
+  return (() =>
+    arr.reduce(
+      (acc, currentValue) =>
+        acc.concat(
+          Array.isArray(currentValue)
+            ? flattenWithReduceClosure(currentValue)
+            : currentValue
+        ),
+      []
+    ))();
+}
