@@ -22,15 +22,25 @@ const deep_copy = JSON.parse(JSON.stringify(bio_date));
 // Implement a deepClone function that performs a deep clone operation on JavaScript objects.
 // You can assume the input only contains JSON-serializable values (null, boolean, number, string, Array, Object)
 // and will not contain any other objects like Date, Regex, Map or Set.
-function deep_copy(obj) {
-  if (typeof obj !== "object" || obj === null) return obj;
-  const clone = Array.isArray(obj) ? [] : {};
 
-  for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      clone[key] = deep_copy(obj[key]);
+function deepCopy(values) {
+  if (typeof values !== "object" || values === null) return values;
+  let clone = Array.isArray(values) ? [] : {};
+
+  if (values instanceof Date) {
+    return new Date(Date);
+  }
+
+  if (!Array.isArray(values)) {
+    for (let key in values) {
+      if (values.hasOwnProperty(key)) {
+        clone[key] = deepCopy(values[key]);
+      }
     }
   }
+
+  if (Array.isArray(values)) return values.map((item) => deepCopy(item));
+
   return clone;
 }
 
